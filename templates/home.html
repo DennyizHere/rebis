@@ -31,7 +31,9 @@
     <h1>Changelog</h1>
     {% for post in object_list %}
     {% if post.done == True %}
+        <ul>
             <section class="indent-1">
+            <li>
             <div>
             <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
             </div>
@@ -39,6 +41,8 @@
             <p>{{ post.body }}</p>
             </div>
             </section>
+            </li>
+         </ul>
     {% endif %}
     {% endfor %}
 {% endblock content %}

@@ -21,7 +21,7 @@ class BlogCreateView(CreateView):
 
 class BlogUpdateView(UpdateView):
     model = Post
-    fields = ['body', 'votes']
+    fields = ['body', 'votes', 'tips',]
     template_name = 'post_edit.html'
 
 def increment_counter(request):
