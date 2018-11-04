@@ -16,9 +16,9 @@
             <p>{{ post.body }}</p>
             </div>
             </section>
-            <form method="POST" style="text-align:right">
-                <h3 class="inner">{% csrf_token %}<input type="submit" value="^"></h3>
-            </form>
+            <div style="text-align:right">
+            <h2><a href="{% url 'increment' post.pk %}">^</a></h2>
+            </div>
             <div style="text-align:right">
                 <h2>{{ post.votes }}</h2>
             </div>
@@ -32,15 +32,13 @@
     {% for post in object_list %}
     {% if post.done == True %}
         <ul>
-            <section class="indent-1">
             <li>
             <div>
-            <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+            <h2>{{ post.title }}</h2>
             </div>
             <div>
             <p>{{ post.body }}</p>
             </div>
-            </section>
             </li>
          </ul>
     {% endif %}

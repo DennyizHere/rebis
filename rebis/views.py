@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.db.models import F
 from . models import Post
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -17,14 +18,21 @@ class BlogDetailView(DetailView):
 class BlogCreateView(CreateView):
     model = Post
     template_name = 'post_new.html'
-    fields = '__all__'
+    fields = ['title', 'author', 'body',] 
 
 class BlogUpdateView(UpdateView):
     model = Post
-    fields = ['body', 'votes', 'tips',]
+    fields = ['body',]
     template_name = 'post_edit.html'
 
-def increment_counter(request):
+def increment_counter(request, pk):
     post = Post.objects.get(pk=pk)
     post.votes = F('votes') + 1
     post.save()
+    return HttpResponseRedirect('/')
+
+def increment_money(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.tips = F('tips') + 5
+    post.save()
+    return HttpResponseRedirect('/')
