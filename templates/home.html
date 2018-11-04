@@ -2,18 +2,43 @@
 
 {% block content %}
     {% for post in object_list %}
-        <div class="post-entry">
+    {% if post.done == False %}
+    {% if post.is_money %}
+        <div class="post-entry" id="rcorners2">
+    {% else %}
+        <div class="post-entry" id="rcorners">
+    {% endif %}
         <section class="indent-1">
             <div>
-            <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}     {{ post.votes }}</a></h2>
+            <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
             </div>
             <div>
             <p>{{ post.body }}</p>
             </div>
             </section>
-            <form method="POST">
+            <form method="POST" style="text-align:right">
                 <h3 class="inner">{% csrf_token %}<input type="submit" value="^"></h3>
             </form>
+            <div style="text-align:right">
+                <h2>{{ post.votes }}</h2>
+            </div>
         </div>
+    {% endif %}
+    {% endfor %}
+            <div class="nav-right">
+            <a href="{% url 'post_new' %}">Give a new suggestion here</a>
+            </div>
+    <h1>Changelog</h1>
+    {% for post in object_list %}
+    {% if post.done == True %}
+            <section class="indent-1">
+            <div>
+            <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+            </div>
+            <div>
+            <p>{{ post.body }}</p>
+            </div>
+            </section>
+    {% endif %}
     {% endfor %}
 {% endblock content %}

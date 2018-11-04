@@ -11,9 +11,17 @@ class Post(models.Model):
     )
     body = models.TextField(blank=True)
     votes = models.IntegerField(default=0)
+    tips = models.IntegerField(default=0)
+    done = models.BooleanField(default=False)
+
+    def is_money(self):
+        if self.tips > 0:
+            return True
+        else:
+            return False
 
     class Meta:
-        ordering = ['-votes',]
+        ordering = ['-votes', '-tips',]
         
     def __str__(self):
         return self.title
