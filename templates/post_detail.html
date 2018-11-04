@@ -5,7 +5,15 @@
         <h2>{{ post.title }}</h2>
         <p>{{ post.body }}</p>
     </div>
-
-<a href="{% url 'post_edit' post.pk %}">Edit suggestion</a>
-<a href="{% url 'tip' post.pk %}">Tip $5</a>
+<div class="column">
+    <a href="{% url 'post_edit' post.pk %}">Edit suggestion</a>
+</div>
+<div class="column">
+    <a href="{% url 'tip' post.pk %}">Tip $5</a>
+</div>
+{% if post.queue %}
+<div class="column">
+    <a href="{% url 'confirm' post.pk %}">Confirm that the business heeded the suggestion</a>
+</div>
+{% endif %}
 {% endblock content %}

@@ -86,3 +86,15 @@ header h1 a {
     padding: 20px;
     width: 100%;
 }
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

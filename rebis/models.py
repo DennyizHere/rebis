@@ -13,6 +13,8 @@ class Post(models.Model):
     votes = models.IntegerField(default=0)
     tips = models.IntegerField(default=0)
     done = models.BooleanField(default=False)
+    queue = models.BooleanField(default=False)
+    approve = models.BooleanField(default=False)
 
     def is_money(self):
         if self.tips > 0:

@@ -36,3 +36,9 @@ def increment_money(request, pk):
     post.tips = F('tips') + 5
     post.save()
     return HttpResponseRedirect('/')
+
+def confirm(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.done = True
+    post.save()
+    return HttpResponseRedirect('/')
