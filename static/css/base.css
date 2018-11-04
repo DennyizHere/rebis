@@ -10,8 +10,10 @@ header {
 }
 
 header h1 a {
-    color: red;
+    color: white;
     font-family: 'Lobster';
+    text-decoration: none;
+    font-size: 88px;
 }
 
 .nav-left {
@@ -60,4 +62,13 @@ header h1 a {
 
 .inner {
     display: inline-block;
+}
+
+.indent-1 {
+    float: left;
+}
+
+.indent-1 section {
+    width: 50%;
+    float: left;
 }

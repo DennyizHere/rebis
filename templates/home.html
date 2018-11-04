@@ -3,8 +3,14 @@
 {% block content %}
     {% for post in object_list %}
         <div class="post-entry">
+        <section class="indent-1">
+            <div>
             <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}     {{ post.votes }}</a></h2>
+            </div>
+            <div>
             <p>{{ post.body }}</p>
+            </div>
+            </section>
             <form method="POST">
                 <h3 class="inner">{% csrf_token %}<input type="submit" value="^"></h3>
             </form>
